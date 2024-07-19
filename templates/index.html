@@ -3,11 +3,35 @@
 <head>
     <title>Deep Learning Path</title>
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 1rem;
+        }
         #graph-container {
             position: relative;
             display: inline-block;
+            margin-top: 1rem;
         }
         #graph {
+            max-width: 100%;
+            height: auto;
             border: 1px solid #ccc;
         }
         area {
@@ -23,11 +47,13 @@
     </style>
 </head>
 <body>
-    <h1>Deep Learning Path</h1>
-    <div id="graph-container">
-        <img src="{{ graph_file }}" usemap="#DeepLearningPath" id="graph">
-        {{ image_map|safe }}
-        <div id="hover-indicator"></div>
+    <div class="container">
+        <h1>Deep Learning Path</h1>
+        <div id="graph-container">
+            <img src="{{ graph_file }}" usemap="#DeepLearningPath" id="graph">
+            {{ image_map|safe }}
+            <div id="hover-indicator"></div>
+        </div>
     </div>
     <script>
         console.log("Script started");
@@ -35,7 +61,6 @@
         const hoverIndicator = document.getElementById('hover-indicator');
         let progress = {{ progress|safe }};
         let nodeCoordinates = {};
-
         function showHoverIndicator(coords) {
             console.log("showHoverIndicator called with coords:", coords);
             const [x, y, width, height] = coords.split(',').map(Number);
@@ -45,17 +70,14 @@
             hoverIndicator.style.height = `${height - y}px`;
             hoverIndicator.style.display = 'block';
         }
-
         function hideHoverIndicator() {
             console.log("hideHoverIndicator called");
             hoverIndicator.style.display = 'none';
         }
-
         function isPointInNode(x, y, node) {
             const [nodeX, nodeY, nodeWidth, nodeHeight] = node;
             return x >= nodeX && x <= nodeWidth && y >= nodeY && y <= nodeHeight;
         }
-
         function getClickedNode(x, y) {
             for (const [nodeName, coords] of Object.entries(nodeCoordinates)) {
                 if (isPointInNode(x, y, coords)) {
@@ -64,7 +86,6 @@
             }
             return null;
         }
-
         function attachEventListeners() {
             console.log("Attaching event listeners");
             document.querySelectorAll('area').forEach(area => {
@@ -78,7 +99,6 @@
                 });
             });
         }
-
         function updateTopic(topic) {
             console.log("updateTopic called with topic:", topic);
             fetch('/update', {
@@ -108,7 +128,6 @@
                 alert('An error occurred while updating progress.');
             });
         }
-
         function updateGraph(graphFile, imageMap) {
             console.log("Updating graph with:", graphFile, imageMap);
             graph.src = graphFile + '?t=' + new Date().getTime();
@@ -121,24 +140,20 @@
                 graphContainer.removeChild(existingMap);
             }
             graphContainer.appendChild(newMap);
-            
             // Update nodeCoordinates
             nodeCoordinates = {};
             newMap.querySelectorAll('area').forEach(area => {
                 const [x, y, width, height] = area.coords.split(',').map(Number);
                 nodeCoordinates[area.id] = [x, y, width, height];
             });
-            
             attachEventListeners();
             console.log("Graph updated");
         }
-
         graph.addEventListener('click', (e) => {
             const rect = graph.getBoundingClientRect();
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             console.log(`Clicked at (${x}, ${y})`);
-            
             const clickedNode = getClickedNode(x, y);
             if (clickedNode) {
                 console.log(`Clicked node: ${clickedNode}`);
@@ -147,7 +162,6 @@
                 console.log("No matching node found for click");
             }
         });
-
         window.onload = function() {
             console.log("Window loaded");
             attachEventListeners();
@@ -158,7 +172,6 @@
             });
             console.log("Event listeners attached and nodeCoordinates initialized");
         };
-
         console.log("Script loaded and running");
     </script>
 </body>

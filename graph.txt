@@ -1,0 +1,60 @@
+digraph DeepLearningPath {
+    rankdir=TB;
+    node [shape=box, style="rounded,filled", color=black, fontname="Helvetica", fontsize=10, penwidth=2, width=2, height=0.5];
+    edge [color=gray, arrowhead=open];
+    BasicMath [label="Basic Math\n(Algebra, Calculus)"];
+    BasicProgramming [label="Basic Programming\n(Python)"];
+    LinearAlgebra [label="Linear Algebra"];
+    ProbabilityStatistics [label="Probability &\nStatistics"];
+    DataStructures [label="Data Structures"];
+    Algorithms [label="Algorithms"];
+    NumericalComputing [label="Numerical Computing\n(Numpy)"];
+    DataPreprocessing [label="Data Preprocessing"];
+    MLBasics [label="Machine Learning\nBasics"];
+    NeuralNetworks [label="Neural Networks"];
+    DeepLearningFrameworks [label="Deep Learning Frameworks\n(TensorFlow, PyTorch)"];
+    CNNs [label="Convolutional Neural\nNetworks (CNNs)"];
+    RNNs [label="Recurrent Neural\nNetworks (RNNs)"];
+    GANs [label="Generative Adversarial\nNetworks (GANs)"];
+    RL [label="Reinforcement\nLearning"];
+    NLP [label="Natural Language\nProcessing (NLP)"];
+    AdvancedDL [label="Advanced Deep\nLearning Topics"];
+    ModelDeployment [label="Model Deployment"];
+    EthicsAI [label="Ethics in AI"];
+    {rank=same; BasicMath; BasicProgramming}
+    {rank=same; LinearAlgebra; DataStructures}
+    {rank=same; ProbabilityStatistics; Algorithms}
+    {rank=same; NumericalComputing; DataPreprocessing}
+    BasicMath -> LinearAlgebra;
+    BasicMath -> ProbabilityStatistics;
+    BasicProgramming -> DataStructures;
+    BasicProgramming -> NumericalComputing;
+    BasicProgramming -> DataPreprocessing;
+    LinearAlgebra -> NumericalComputing;
+    LinearAlgebra -> MLBasics;
+    ProbabilityStatistics -> MLBasics;
+    DataStructures -> Algorithms;
+    Algorithms -> MLBasics;
+    NumericalComputing -> MLBasics;
+    MLBasics -> NeuralNetworks;
+    DataPreprocessing -> NeuralNetworks;
+    NeuralNetworks -> DeepLearningFrameworks;
+    NeuralNetworks -> CNNs;
+    NeuralNetworks -> RNNs;
+    NeuralNetworks -> GANs;
+    NeuralNetworks -> RL;
+    NeuralNetworks -> NLP;
+    DeepLearningFrameworks -> CNNs;
+    DeepLearningFrameworks -> RNNs;
+    DeepLearningFrameworks -> GANs;
+    DeepLearningFrameworks -> RL;
+    DeepLearningFrameworks -> NLP;
+    CNNs -> AdvancedDL;
+    RNNs -> AdvancedDL;
+    GANs -> AdvancedDL;
+    RL -> AdvancedDL;
+    NLP -> AdvancedDL;
+    AdvancedDL -> ModelDeployment;
+    AdvancedDL -> EthicsAI;
+    ModelDeployment -> EthicsAI;
+}
