@@ -1,0 +1,60 @@
+digraph DiscreteMathematics {
+    rankdir=TB;
+    node [shape=box, style="rounded,filled", color=black, fontname="Helvetica", fontsize=10, penwidth=2, width=2, height=0.5];
+    edge [color=gray, arrowhead=open];
+
+    // Foundations
+    SetTheory -> Logic;
+    SetTheory -> Functions;
+    Logic -> ProofTechniques;
+    
+    // Number Theory
+    SetTheory -> NumberTheory;
+    NumberTheory -> Divisibility;
+    NumberTheory -> Primes;
+    Divisibility -> Congruences;
+    Primes -> Cryptography;
+    
+    // Combinatorics
+    SetTheory -> Combinatorics;
+    Combinatorics -> PermutationsCombinations;
+    Combinatorics -> PigeonholePrinciple;
+    PermutationsCombinations -> GeneratingFunctions;
+    
+    // Graph Theory
+    SetTheory -> GraphTheory;
+    GraphTheory -> TreesForests;
+    GraphTheory -> PlanarGraphs;
+    GraphTheory -> GraphColoring;
+    TreesForests -> SpanningTrees;
+    
+    // Probability
+    SetTheory -> Probability;
+    Probability -> ConditionalProbability;
+    Probability -> RandomVariables;
+    ConditionalProbability -> BayesTheorem;
+    
+    // Algebra
+    SetTheory -> AlgebraicStructures;
+    AlgebraicStructures -> Groups;
+    AlgebraicStructures -> Rings;
+    AlgebraicStructures -> Fields;
+    
+    // Algorithms
+    ProofTechniques -> Algorithms;
+    Algorithms -> Recursion;
+    Algorithms -> Complexity;
+    GraphTheory -> GraphAlgorithms;
+    
+    // Advanced Topics
+    ProofTechniques -> MathematicalInduction;
+    Functions -> Recurrence;
+    Recurrence -> DifferenceEquations;
+    Logic -> BooleanAlgebra;
+    BooleanAlgebra -> SwitchingCircuits;
+    
+    // Applications
+    Cryptography -> ComputerSecurity;
+    GraphAlgorithms -> NetworkOptimization;
+    Complexity -> ComputabilityTheory;
+}

@@ -1,0 +1,38 @@
+digraph LargeLanguageModels {
+    rankdir=TB;
+    node [shape=box, style="rounded,filled", color=black, fontname="Helvetica", fontsize=10, penwidth=2, width=2, height=0.5];
+    edge [color=gray, arrowhead=open];
+
+    Introduction -> OverviewOfAI;
+    OverviewOfAI -> MachineLearningBasics;
+    MachineLearningBasics -> SupervisedLearning;
+    MachineLearningBasics -> UnsupervisedLearning;
+    MachineLearningBasics -> ReinforcementLearning;
+    SupervisedLearning -> NeuralNetworks;
+    NeuralNetworks -> Backpropagation;
+    Backpropagation -> DeepLearning;
+    DeepLearning -> CNNBasics;
+    DeepLearning -> RNNBasics;
+    DeepLearning -> FeedforwardNNs;
+    CNNBasics -> AdvancedCNNs;
+    RNNBasics -> LSTM;
+    LSTM -> GRU;
+    GRU -> AttentionMechanism;
+    AttentionMechanism -> SequenceToSequenceModels;
+    SequenceToSequenceModels -> TransformerBasics;
+    TransformerBasics -> EncoderDecoderArchitecture;
+    EncoderDecoderArchitecture -> SelfAttention;
+    SelfAttention -> PositionalEncoding;
+    PositionalEncoding -> MultiHeadAttention;
+    MultiHeadAttention -> TransformerApplications;
+    TransformerApplications -> BERTBasics;
+    TransformerApplications -> GPTBasics;
+    BERTBasics -> BERTFineTuning;
+    GPTBasics -> GPTFineTuning;
+    BERTFineTuning -> PracticalApplications;
+    GPTFineTuning -> PracticalApplications;
+    PracticalApplications -> CaseStudies;
+    PracticalApplications -> IndustryUseCases;
+    IndustryUseCases -> EthicalConsiderations;
+    CaseStudies -> EthicalConsiderations;
+}

@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Learning Tech Tree</title>
+    <title>Learning Path</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
+			overflow-x: hidden;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
@@ -19,6 +21,8 @@
             padding: 2rem;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+			width: 100%;
+            overflow: hidden;
         }
         h1 {
             color: #333;
@@ -26,13 +30,25 @@
         }
         #graph-container {
             position: relative;
-            display: inline-block;
-            margin-top: 1rem;
+            width: 100%;
+            height: 85vh;
+            overflow: auto;
+			scroll-behavior: smooth;
         }
+		#graph-container::-webkit-scrollbar {
+			width: 12px;
+			height: 12px;
+		}
+		#graph-container::-webkit-scrollbar-thumb {
+			background-color: #888;
+			border-radius: 6px;
+		}
+		#graph-container::-webkit-scrollbar-track {
+			background-color: #f1f1f1;
+		}
         #graph {
-            max-width: 100%;
+            max-width: none;
             height: auto;
-            border: 1px solid #ccc;
         }
         area {
             cursor: pointer;
@@ -44,23 +60,62 @@
             display: none;
             border-radius: 5px;
         }
+        .subject-buttons {
+            margin-bottom: 1rem;
+        }
+        .subject-button {
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .subject-button.active {
+            background-color: #45a049;
+        }
+		.loading {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Learning Tech Tree</h1>
+        <h1>Learning Path</h1>
+        <div class="subject-buttons">
+            {% for subject in subjects %}
+                <button class="subject-button {% if subject == selected_subject %}active{% endif %}" onclick="changeSubject('{{ subject }}')">{{ subject }}</button>
+            {% endfor %}
+        </div>
         <div id="graph-container">
-            <img src="{{ graph_file }}" usemap="#DeepLearningPath" id="graph">
+            <img src="{{ graph_file }}" usemap="#LearningPath" id="graph">
             {{ image_map|safe }}
             <div id="hover-indicator"></div>
         </div>
     </div>
+    <div id="loading" class="loading">Loading...</div>
     <script>
         console.log("Script started");
         const graph = document.getElementById('graph');
         const hoverIndicator = document.getElementById('hover-indicator');
         let progress = {{ progress|safe }};
         let nodeCoordinates = {};
+        let currentSubject = "{{ selected_subject }}";
+        function showLoading() {
+            document.getElementById('loading').style.display = 'block';
+        }
+        function hideLoading() {
+            document.getElementById('loading').style.display = 'none';
+        }
         function showHoverIndicator(coords) {
             console.log("showHoverIndicator called with coords:", coords);
             const [x, y, width, height] = coords.split(',').map(Number);
@@ -99,34 +154,43 @@
                 });
             });
         }
-        function updateTopic(topic) {
-            console.log("updateTopic called with topic:", topic);
-            fetch('/update', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ topic: topic, completed: !progress[topic] }),
-            })
-            .then(response => {
-                console.log("Received response:", response);
-                return response.json();
-            })
-            .then(data => {
-                console.log("Parsed response data:", data);
-                if (data.success) {
-                    console.log("Update successful");
-                    updateGraph(data.graph_file, data.image_map);
-                    progress = data.progress;
-                } else {
-                    console.error("Failed to update progress");
-                    alert('Failed to update progress.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('An error occurred while updating progress.');
-            });
+		 function updateTopic(topic) {
+			console.log("updateTopic called with topic:", topic);
+			showLoading();
+			fetch('/update', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+				body: JSON.stringify({ subject: currentSubject, topic: topic, completed: !progress[topic] }),
+			})
+			.then(response => {
+				console.log("Received response:", response);
+				return response.json();
+			})
+			.then(data => {
+				console.log("Parsed response data:", data);
+				if (data.success) {
+					console.log("Update successful");
+					refreshRoadmap(data);
+				} else {
+					console.error("Failed to update progress");
+					alert('Failed to update progress.');
+				}
+			})
+			.catch(error => {
+				console.error('Error:', error);
+				alert('An error occurred while updating progress.');
+			})
+			.finally(() => {
+				hideLoading();
+			});
+		}
+        function refreshRoadmap(data) {
+            console.log("Refreshing roadmap with:", data);
+            updateGraph(data.graph_file, data.image_map);
+            progress = data.progress;
+            console.log("Roadmap refreshed");
         }
         function updateGraph(graphFile, imageMap) {
             console.log("Updating graph with:", graphFile, imageMap);
@@ -140,7 +204,16 @@
                 graphContainer.removeChild(existingMap);
             }
             graphContainer.appendChild(newMap);
-            // Update nodeCoordinates
+            graph.onload = function() {
+                const svgDoc = graph.contentDocument;
+                if (svgDoc) {
+                    const nodeTexts = svgDoc.querySelectorAll('.node text');
+                    nodeTexts.forEach(text => {
+                        text.style.fontSize = '16px';
+                        text.style.fontFamily = 'Helvetica, Arial, sans-serif';
+                    });
+                }
+            };
             nodeCoordinates = {};
             newMap.querySelectorAll('area').forEach(area => {
                 const [x, y, width, height] = area.coords.split(',').map(Number);
@@ -148,6 +221,11 @@
             });
             attachEventListeners();
             console.log("Graph updated");
+        }
+       function changeSubject(subject) {
+            console.log("Changing subject to:", subject);
+            showLoading();
+            window.location.href = `/?subject=${encodeURIComponent(subject)}`;
         }
         graph.addEventListener('click', (e) => {
             const rect = graph.getBoundingClientRect();
@@ -165,7 +243,6 @@
         window.onload = function() {
             console.log("Window loaded");
             attachEventListeners();
-            // Initialize nodeCoordinates
             document.querySelectorAll('area').forEach(area => {
                 const [x, y, width, height] = area.coords.split(',').map(Number);
                 nodeCoordinates[area.id] = [x, y, width, height];

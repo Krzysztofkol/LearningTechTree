@@ -1,16 +1,21 @@
-<map id="LargeLanguageModels" name="LargeLanguageModels">
-<area shape="rect" id="Introduction" href="javascript:void(0);" title="Introduction" alt="" coords="221,5,413,53"/>
-<area shape="rect" id="BasicConcepts" href="javascript:void(0);" title="BasicConcepts" alt="" coords="221,101,413,149"/>
-<area shape="rect" id="NeuralNetworks" href="javascript:void(0);" title="NeuralNetworks" alt="" coords="221,197,413,245"/>
-<area shape="rect" id="DeepLearning" href="javascript:void(0);" title="DeepLearning" alt="" coords="221,293,413,341"/>
-<area shape="rect" id="NLPBasics" href="javascript:void(0);" title="NLPBasics" alt="" coords="221,389,413,437"/>
-<area shape="rect" id="RNNs" href="javascript:void(0);" title="RNNs" alt="" coords="113,485,305,533"/>
-<area shape="rect" id="CNNs" href="javascript:void(0);" title="CNNs" alt="" coords="329,485,521,533"/>
-<area shape="rect" id="LSTM" href="javascript:void(0);" title="LSTM" alt="" coords="113,581,305,629"/>
-<area shape="rect" id="AttentionMechanism" href="javascript:void(0);" title="AttentionMechanism" alt="" coords="113,677,305,725"/>
-<area shape="rect" id="TransformerArchitecture" href="javascript:void(0);" title="TransformerArchitecture" alt="" coords="113,773,305,821"/>
-<area shape="rect" id="BERT" href="javascript:void(0);" title="BERT" alt="" coords="5,869,197,917"/>
-<area shape="rect" id="GPTSeries" href="javascript:void(0);" title="GPTSeries" alt="" coords="221,869,413,917"/>
-<area shape="rect" id="PracticalApplications" href="javascript:void(0);" title="PracticalApplications" alt="" coords="113,965,305,1013"/>
-<area shape="rect" id="EthicalConsiderations" href="javascript:void(0);" title="EthicalConsiderations" alt="" coords="113,1061,305,1109"/>
+<map id="DeepLearningPath" name="DeepLearningPath">
+<area shape="rect" id="BasicMath" href="javascript:void(0);" title="Basic Math\n(Algebra, Calculus)" alt="" coords="216,5,408,53"/>
+<area shape="rect" id="LinearAlgebra" href="javascript:void(0);" title="Linear Algebra" alt="" coords="283,101,475,149"/>
+<area shape="rect" id="ProbabilityStatistics" href="javascript:void(0);" title="Probability &amp;\nStatistics" alt="" coords="149,197,341,245"/>
+<area shape="rect" id="BasicProgramming" href="javascript:void(0);" title="Basic Programming\n(Python)" alt="" coords="632,5,824,53"/>
+<area shape="rect" id="DataStructures" href="javascript:void(0);" title="Data Structures" alt="" coords="632,101,824,149"/>
+<area shape="rect" id="NumericalComputing" href="javascript:void(0);" title="Numerical Computing\n(Numpy)" alt="" coords="416,197,608,245"/>
+<area shape="rect" id="DataPreprocessing" href="javascript:void(0);" title="Data Preprocessing" alt="" coords="848,197,1040,245"/>
+<area shape="rect" id="MLBasics" href="javascript:void(0);" title="Machine Learning\nBasics" alt="" coords="416,293,608,341"/>
+<area shape="rect" id="Algorithms" href="javascript:void(0);" title="Algorithms" alt="" coords="632,197,824,245"/>
+<area shape="rect" id="NeuralNetworks" href="javascript:void(0);" title="Neural Networks" alt="" coords="483,389,675,437"/>
+<area shape="rect" id="DeepLearningFrameworks" href="javascript:void(0);" title="Deep Learning Frameworks\n(TensorFlow, PyTorch)" alt="" coords="416,485,608,533"/>
+<area shape="rect" id="CNNs" href="javascript:void(0);" title="Convolutional Neural\nNetworks (CNNs)" alt="" coords="5,581,197,629"/>
+<area shape="rect" id="RNNs" href="javascript:void(0);" title="Recurrent Neural\nNetworks (RNNs)" alt="" coords="221,581,413,629"/>
+<area shape="rect" id="GANs" href="javascript:void(0);" title="Generative Adversarial\nNetworks (GANs)" alt="" coords="437,581,629,629"/>
+<area shape="rect" id="RL" href="javascript:void(0);" title="Reinforcement\nLearning" alt="" coords="653,581,845,629"/>
+<area shape="rect" id="NLP" href="javascript:void(0);" title="Natural Language\nProcessing (NLP)" alt="" coords="869,581,1061,629"/>
+<area shape="rect" id="AdvancedDL" href="javascript:void(0);" title="Advanced Deep\nLearning Topics" alt="" coords="437,677,629,725"/>
+<area shape="rect" id="ModelDeployment" href="javascript:void(0);" title="Model Deployment" alt="" coords="504,773,696,821"/>
+<area shape="rect" id="EthicsAI" href="javascript:void(0);" title="Ethics in AI" alt="" coords="437,869,629,917"/>
 </map>

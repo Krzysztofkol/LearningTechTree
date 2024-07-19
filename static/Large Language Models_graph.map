@@ -1,0 +1,33 @@
+<map id="LargeLanguageModels" name="LargeLanguageModels">
+<area shape="rect" id="Introduction" href="javascript:void(0);" title="Introduction" alt="" coords="437,5,629,53"/>
+<area shape="rect" id="OverviewOfAI" href="javascript:void(0);" title="OverviewOfAI" alt="" coords="437,101,629,149"/>
+<area shape="rect" id="MachineLearningBasics" href="javascript:void(0);" title="MachineLearningBasics" alt="" coords="437,197,629,245"/>
+<area shape="rect" id="SupervisedLearning" href="javascript:void(0);" title="SupervisedLearning" alt="" coords="221,293,413,341"/>
+<area shape="rect" id="UnsupervisedLearning" href="javascript:void(0);" title="UnsupervisedLearning" alt="" coords="437,293,629,341"/>
+<area shape="rect" id="ReinforcementLearning" href="javascript:void(0);" title="ReinforcementLearning" alt="" coords="653,293,845,341"/>
+<area shape="rect" id="NeuralNetworks" href="javascript:void(0);" title="NeuralNetworks" alt="" coords="221,389,413,437"/>
+<area shape="rect" id="Backpropagation" href="javascript:void(0);" title="Backpropagation" alt="" coords="221,485,413,533"/>
+<area shape="rect" id="DeepLearning" href="javascript:void(0);" title="DeepLearning" alt="" coords="221,581,413,629"/>
+<area shape="rect" id="CNNBasics" href="javascript:void(0);" title="CNNBasics" alt="" coords="5,677,197,725"/>
+<area shape="rect" id="RNNBasics" href="javascript:void(0);" title="RNNBasics" alt="" coords="221,677,413,725"/>
+<area shape="rect" id="FeedforwardNNs" href="javascript:void(0);" title="FeedforwardNNs" alt="" coords="437,677,629,725"/>
+<area shape="rect" id="AdvancedCNNs" href="javascript:void(0);" title="AdvancedCNNs" alt="" coords="5,773,197,821"/>
+<area shape="rect" id="LSTM" href="javascript:void(0);" title="LSTM" alt="" coords="221,773,413,821"/>
+<area shape="rect" id="GRU" href="javascript:void(0);" title="GRU" alt="" coords="221,869,413,917"/>
+<area shape="rect" id="AttentionMechanism" href="javascript:void(0);" title="AttentionMechanism" alt="" coords="221,965,413,1013"/>
+<area shape="rect" id="SequenceToSequenceModels" href="javascript:void(0);" title="SequenceToSequenceModels" alt="" coords="221,1061,414,1109"/>
+<area shape="rect" id="TransformerBasics" href="javascript:void(0);" title="TransformerBasics" alt="" coords="221,1157,413,1205"/>
+<area shape="rect" id="EncoderDecoderArchitecture" href="javascript:void(0);" title="EncoderDecoderArchitecture" alt="" coords="221,1253,413,1301"/>
+<area shape="rect" id="SelfAttention" href="javascript:void(0);" title="SelfAttention" alt="" coords="221,1349,413,1397"/>
+<area shape="rect" id="PositionalEncoding" href="javascript:void(0);" title="PositionalEncoding" alt="" coords="221,1445,413,1493"/>
+<area shape="rect" id="MultiHeadAttention" href="javascript:void(0);" title="MultiHeadAttention" alt="" coords="221,1541,413,1589"/>
+<area shape="rect" id="TransformerApplications" href="javascript:void(0);" title="TransformerApplications" alt="" coords="221,1637,413,1685"/>
+<area shape="rect" id="BERTBasics" href="javascript:void(0);" title="BERTBasics" alt="" coords="113,1733,305,1781"/>
+<area shape="rect" id="GPTBasics" href="javascript:void(0);" title="GPTBasics" alt="" coords="329,1733,521,1781"/>
+<area shape="rect" id="BERTFineTuning" href="javascript:void(0);" title="BERTFineTuning" alt="" coords="113,1829,305,1877"/>
+<area shape="rect" id="GPTFineTuning" href="javascript:void(0);" title="GPTFineTuning" alt="" coords="329,1829,521,1877"/>
+<area shape="rect" id="PracticalApplications" href="javascript:void(0);" title="PracticalApplications" alt="" coords="221,1925,413,1973"/>
+<area shape="rect" id="CaseStudies" href="javascript:void(0);" title="CaseStudies" alt="" coords="113,2021,305,2069"/>
+<area shape="rect" id="IndustryUseCases" href="javascript:void(0);" title="IndustryUseCases" alt="" coords="329,2021,521,2069"/>
+<area shape="rect" id="EthicalConsiderations" href="javascript:void(0);" title="EthicalConsiderations" alt="" coords="221,2117,413,2165"/>
+</map>
