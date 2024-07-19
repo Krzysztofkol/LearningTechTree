@@ -1,0 +1,21 @@
+<map id="DeepLearningPath" name="DeepLearningPath">
+<area shape="rect" id="BasicMath" href="javascript:void(0);" title="Basic Math (Algebra, Calculus)" alt="" coords="5,36,293,84"/>
+<area shape="rect" id="LinearAlgebra" href="javascript:void(0);" title="Linear Algebra" alt="" coords="341,67,533,115"/>
+<area shape="rect" id="ProbabilityStatistics" href="javascript:void(0);" title="Probability &amp; Statistics" alt="" coords="596,5,826,53"/>
+<area shape="rect" id="NumericalComputing" href="javascript:void(0);" title="Numerical Computing (Numpy)" alt="" coords="581,128,841,176"/>
+<area shape="rect" id="MLBasics" href="javascript:void(0);" title="Machine Learning Basics" alt="" coords="889,128,1109,176"/>
+<area shape="rect" id="BasicProgramming" href="javascript:void(0);" title="Basic Programming (Python)" alt="" coords="25,200,274,248"/>
+<area shape="rect" id="DataStructures" href="javascript:void(0);" title="Data Structures" alt="" coords="341,200,533,248"/>
+<area shape="rect" id="DataPreprocessing" href="javascript:void(0);" title="Data Preprocessing" alt="" coords="903,231,1095,279"/>
+<area shape="rect" id="Algorithms" href="javascript:void(0);" title="Algorithms" alt="" coords="615,200,807,248"/>
+<area shape="rect" id="NeuralNetworks" href="javascript:void(0);" title="Neural Networks" alt="" coords="1157,195,1349,243"/>
+<area shape="rect" id="DeepLearningFrameworks" href="javascript:void(0);" title="Deep Learning Frameworks (TensorFlow, PyTorch)" alt="" coords="1397,164,1839,212"/>
+<area shape="rect" id="CNNs" href="javascript:void(0);" title="Convolutional Neural Networks (CNNs)" alt="" coords="1897,48,2242,96"/>
+<area shape="rect" id="RNNs" href="javascript:void(0);" title="Recurrent Neural Networks (RNNs)" alt="" coords="1916,120,2223,168"/>
+<area shape="rect" id="GANs" href="javascript:void(0);" title="Generative Adversarial Networks (GANs)" alt="" coords="1887,192,2252,240"/>
+<area shape="rect" id="RL" href="javascript:void(0);" title="Reinforcement Learning" alt="" coords="1964,264,2175,312"/>
+<area shape="rect" id="NLP" href="javascript:void(0);" title="Natural Language Processing (NLP)" alt="" coords="1911,336,2228,384"/>
+<area shape="rect" id="AdvancedDL" href="javascript:void(0);" title="Advanced Deep Learning Topics" alt="" coords="2300,192,2578,240"/>
+<area shape="rect" id="ModelDeployment" href="javascript:void(0);" title="Model Deployment" alt="" coords="2626,223,2818,271"/>
+<area shape="rect" id="EthicsAI" href="javascript:void(0);" title="Ethics in AI" alt="" coords="2866,192,3058,240"/>
+</map>

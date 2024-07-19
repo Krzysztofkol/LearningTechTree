@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deep Learning Path</title>
+    <style>
+        #graph-container {
+            position: relative;
+            display: inline-block;
+        }
+        #graph {
+            border: 1px solid #ccc;
+        }
+        area {
+            cursor: pointer;
+        }
+        #hover-indicator {
+            position: absolute;
+            border: 2px solid red;
+            pointer-events: none;
+            display: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Deep Learning Path</h1>
+    <div id="graph-container">
+        <img src="{{ graph_file }}" usemap="#DeepLearningPath" id="graph">
+        {{ image_map|safe }}
+        <div id="hover-indicator"></div>
+    </div>
+    <script>
+        console.log("Script started");
+        const graph = document.getElementById('graph');
+        const hoverIndicator = document.getElementById('hover-indicator');
+        let progress = {{ progress|safe }};
+        let nodeCoordinates = {};
+
+        function showHoverIndicator(coords) {
+            console.log("showHoverIndicator called with coords:", coords);
+            const [x, y, width, height] = coords.split(',').map(Number);
+            hoverIndicator.style.left = `${x}px`;
+            hoverIndicator.style.top = `${y}px`;
+            hoverIndicator.style.width = `${width - x}px`;
+            hoverIndicator.style.height = `${height - y}px`;
+            hoverIndicator.style.display = 'block';
+        }
+
+        function hideHoverIndicator() {
+            console.log("hideHoverIndicator called");
+            hoverIndicator.style.display = 'none';
+        }
+
+        function isPointInNode(x, y, node) {
+            const [nodeX, nodeY, nodeWidth, nodeHeight] = node;
+            return x >= nodeX && x <= nodeWidth && y >= nodeY && y <= nodeHeight;
+        }
+
+        function getClickedNode(x, y) {
+            for (const [nodeName, coords] of Object.entries(nodeCoordinates)) {
+                if (isPointInNode(x, y, coords)) {
+                    return nodeName;
+                }
+            }
+            return null;
+        }
+
+        function attachEventListeners() {
+            console.log("Attaching event listeners");
+            document.querySelectorAll('area').forEach(area => {
+                console.log(`Attaching listeners to area with id: ${area.id}`);
+                area.addEventListener('mouseover', () => showHoverIndicator(area.coords));
+                area.addEventListener('mouseout', hideHoverIndicator);
+                area.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    console.log(`Clicked area with id: ${area.id}`);
+                    updateTopic(area.id);
+                });
+            });
+        }
+
+        function updateTopic(topic) {
+            console.log("updateTopic called with topic:", topic);
+            fetch('/update', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ topic: topic, completed: !progress[topic] }),
+            })
+            .then(response => {
+                console.log("Received response:", response);
+                return response.json();
+            })
+            .then(data => {
+                console.log("Parsed response data:", data);
+                if (data.success) {
+                    console.log("Update successful");
+                    updateGraph(data.graph_file, data.image_map);
+                    progress = data.progress;
+                } else {
+                    console.error("Failed to update progress");
+                    alert('Failed to update progress.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('An error occurred while updating progress.');
+            });
+        }
+
+        function updateGraph(graphFile, imageMap) {
+            console.log("Updating graph with:", graphFile, imageMap);
+            graph.src = graphFile + '?t=' + new Date().getTime();
+            const parser = new DOMParser();
+            const mapDoc = parser.parseFromString(imageMap, 'text/html');
+            const newMap = mapDoc.querySelector('map');
+            const graphContainer = document.getElementById('graph-container');
+            const existingMap = document.querySelector('map');
+            if (existingMap) {
+                graphContainer.removeChild(existingMap);
+            }
+            graphContainer.appendChild(newMap);
+            
+            // Update nodeCoordinates
+            nodeCoordinates = {};
+            newMap.querySelectorAll('area').forEach(area => {
+                const [x, y, width, height] = area.coords.split(',').map(Number);
+                nodeCoordinates[area.id] = [x, y, width, height];
+            });
+            
+            attachEventListeners();
+            console.log("Graph updated");
+        }
+
+        graph.addEventListener('click', (e) => {
+            const rect = graph.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            console.log(`Clicked at (${x}, ${y})`);
+            
+            const clickedNode = getClickedNode(x, y);
+            if (clickedNode) {
+                console.log(`Clicked node: ${clickedNode}`);
+                updateTopic(clickedNode);
+            } else {
+                console.log("No matching node found for click");
+            }
+        });
+
+        window.onload = function() {
+            console.log("Window loaded");
+            attachEventListeners();
+            // Initialize nodeCoordinates
+            document.querySelectorAll('area').forEach(area => {
+                const [x, y, width, height] = area.coords.split(',').map(Number);
+                nodeCoordinates[area.id] = [x, y, width, height];
+            });
+            console.log("Event listeners attached and nodeCoordinates initialized");
+        };
+
+        console.log("Script loaded and running");
+    </script>
+</body>
+</html>
