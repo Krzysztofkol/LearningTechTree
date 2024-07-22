@@ -86,11 +86,43 @@
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
+        #progress-bar-container {
+            width: 45%;
+            background-color: #ddd;
+            margin: 10px auto;
+            height: 24px;
+            border-radius: 5px;
+            position: relative;
+            overflow: hidden; /* Changed from visible to hidden */
+        }
+        #progress-bar {
+            width: 0;
+            height: 100%;
+            background-color: #4CAF50;
+            border-radius: 5px 0 0 5px;
+            transition: width 0.5s ease-out;
+			position: absolute;
+			z-index: 1;
+        }
+        #progress-label {
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            line-height: 24px;
+            color: #000;
+            z-index: 2;
+			font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Learning Path</h1>
+  <!-- Progress Bar Container -->
+		<div id="progress-bar-container">
+			<div id="progress-bar" style="width: 0%;"></div>
+			<div id="progress-label">0%</div>
+		</div>
         <div class="subject-buttons">
             {% for subject in subjects %}
                 <button class="subject-button {% if subject == selected_subject %}active{% endif %}" onclick="changeSubject('{{ subject }}')">{{ subject }}</button>
@@ -186,10 +218,22 @@
 				hideLoading();
 			});
 		}
+        function updateProgressBar(percentage) {
+            console.log('Updating progress bar to: ' + percentage + '%');
+            const progressBar = document.getElementById('progress-bar');
+            const progressLabel = document.getElementById('progress-label');
+            try {
+                progressBar.style.width = `${percentage}%`;
+                progressLabel.innerText = `${percentage.toFixed(0)}%`;
+            } catch (error) {
+                console.error('Error updating progress bar:', error);
+            }
+        }
         function refreshRoadmap(data) {
             console.log("Refreshing roadmap with:", data);
             updateGraph(data.graph_file, data.image_map);
             progress = data.progress;
+            updateProgressBar(data.progress_percentage);
             console.log("Roadmap refreshed");
         }
         function updateGraph(graphFile, imageMap) {
@@ -242,6 +286,7 @@
         });
         window.onload = function() {
             console.log("Window loaded");
+			updateProgressBar({{ progress_percentage }});
             attachEventListeners();
             document.querySelectorAll('area').forEach(area => {
                 const [x, y, width, height] = area.coords.split(',').map(Number);
