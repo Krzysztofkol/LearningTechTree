@@ -38,7 +38,7 @@ Before using be sure to install dependencies following the `Installation` sectio
 
 To run the app, you can use `start-app-script.bat`
 
-To add a roadmap on a subject `Subject`:
+You can add as many roadmaps as you want. To add a roadmap on a subject `Subject`:
 
 1. create folder `Subject` in the main directory,
 2. create empty file `graph.txt` in the newly created `Subject` folder,
@@ -46,6 +46,7 @@ To add a roadmap on a subject `Subject`:
 4. place the graph into `graph.txt` file
 5. run the app or refresh page to make the app generate the `progress.json`
 
+If you want to remove a roadmap on `Subject`, just remove the `Subject` folder.
 
 ### Installation
 
@@ -77,10 +78,3 @@ You also need to confirm graphviz installation and set environment variables (pr
       - Example `LIB`: `C:\Program Files\Graphviz\lib`.
 	- Add Microsoft Visual C++ 14.0 or greater directory to `PATH`: 
       - Example: `C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.40.33807\bin\HostX86\x64\cl.exe`.
-
-3. **Re-attempt Pygraphviz Installation**:
-    - Open a new Command Prompt.
-    - Run:
-      ```sh
-      pip install pygraphviz
-      ```
