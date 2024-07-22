@@ -78,3 +78,59 @@ You also need to confirm graphviz installation and set environment variables (pr
       - Example `LIB`: `C:\Program Files\Graphviz\lib`.
 	- Add Microsoft Visual C++ 14.0 or greater directory to `PATH`: 
       - Example: `C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\VC\Tools\MSVC\14.40.33807\bin\HostX86\x64\cl.exe`.
+
+# Roadmap generation prompt:
+
+Here is prompt for roadmap generation. I highly recommend Claude-3.5-Sonnet on https://claude.ai/ or ChatGPT-4o-Classic on https://chatgpt.com/g/g-YyyyMT9XH-chatgpt-classic.
+
+"""
+# Context:
+Here is format template:
+# Template:
+## Basic structure:
+```
+digraph SubjectName {
+    rankdir=TB;
+    node [shape=box, style="rounded,filled", color=black, fontname="Helvetica", fontsize=10, penwidth=2, width=2, height=0.5];
+    edge [color=gray, arrowhead=open];
+    // Node definitions and relationships will go here
+}
+```
+## Graph Structure Examples:
+### Linear Progression:
+```
+Topic1 -> Topic2;
+Topic2 -> Topic3;
+Topic3 -> Topic4;
+```
+### Branching Paths:
+```
+RootTopic -> Branch1Topic1;
+RootTopic -> Branch2Topic1;
+Branch1Topic1 -> Branch1Topic2;
+Branch2Topic1 -> Branch2Topic2;
+```
+### Converging Paths:
+```
+Topic1 -> Topic3;
+Topic2 -> Topic3;
+Topic3 -> Topic4;
+```
+# Topics list:
+```
+Introduction to Linear Modeling in Python
+Statistical Thinking in Python (Part 1)
+Statistical Thinking in Python (Part 2)
+A/B Testing in Python
+Foundations of Inference in Python
+Generalized Linear Models in Python
+Statistical Simulation in Python
+Monte Carlo Simulations in Python
+Case Studies in Statistical Thinking
+Discrete Event Simulation in Python
+Performing Experiments in Python
+Practicing Statistics Interview Questions in Python
+``
+# Task:
+I want to learn about statistics from `Topics list`. Generate learning dependency graph in DOT language using described format template. Maximize concurrency without violating dependencies. Never use quotation marks. Use floors ("_") instead of spaces (" "). Lets 1. understand task and mental contrast potential issues, 2. make detailed to-do list, 3. devise detailed plan to complete task. Then lets take deep breath, carry out plan, and do task step-by-step.
+"""

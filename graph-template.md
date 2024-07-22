@@ -127,46 +127,55 @@ When using this template with a large language model to generate a `graph.txt` f
 
 Remember to verify the logical flow and accuracy of the generated graph, as large language models may occasionally produce errors or inconsistencies.
 
-### Quick prompt:
-
+# Quick prompt:
 """
-#### Context:
+# Context:
 Here is format template:
-#### Basic structure:
-
+# Template:
+## Basic structure:
 ```
 digraph SubjectName {
     rankdir=TB;
     node [shape=box, style="rounded,filled", color=black, fontname="Helvetica", fontsize=10, penwidth=2, width=2, height=0.5];
     edge [color=gray, arrowhead=open];
-
     // Node definitions and relationships will go here
 }
 ```
-
-#### Graph Structure Examples:
-
-##### Linear Progression:
+## Graph Structure Examples:
+### Linear Progression:
 ```
 Topic1 -> Topic2;
 Topic2 -> Topic3;
 Topic3 -> Topic4;
 ```
-
-##### Branching Paths:
+### Branching Paths:
 ```
 RootTopic -> Branch1Topic1;
 RootTopic -> Branch2Topic1;
 Branch1Topic1 -> Branch1Topic2;
 Branch2Topic1 -> Branch2Topic2;
 ```
-
-##### Converging Paths:
+### Converging Paths:
 ```
 Topic1 -> Topic3;
 Topic2 -> Topic3;
 Topic3 -> Topic4;
 ```
-#### Task:
-I want to learn ___ Generate learning dependency graph in DOT language using described format template.
+# Topics list:
+```
+Introduction to Linear Modeling in Python
+Statistical Thinking in Python (Part 1)
+Statistical Thinking in Python (Part 2)
+A/B Testing in Python
+Foundations of Inference in Python
+Generalized Linear Models in Python
+Statistical Simulation in Python
+Monte Carlo Simulations in Python
+Case Studies in Statistical Thinking
+Discrete Event Simulation in Python
+Performing Experiments in Python
+Practicing Statistics Interview Questions in Python
+``
+# Task:
+I want to learn about statistics from `Topics list`. Generate learning dependency graph in DOT language using described format template. Maximize concurrency without violating dependencies. Never use quotation marks. Use floors ("_") instead of spaces (" "). Lets 1. understand task and mental contrast potential issues, 2. make detailed to-do list, 3. devise detailed plan to complete task. Then lets take deep breath, carry out plan, and do task step-by-step.
 """
