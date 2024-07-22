@@ -32,7 +32,22 @@ LearningTechTree/
 └── start-app-script.bat
 ```
 
-### Dependencies
+### Usage
+
+Before using be sure to install dependencies following the `Installation` section.
+
+To run the app, you can use `start-app-script.bat`
+
+To add a roadmap on a subject `Subject`:
+
+1. create folder `Subject` in the main directory,
+2. create empty file `graph.txt` in the newly created `Subject` folder,
+3. generate the graph by using prompt from `graph-template.md`,
+4. place the graph into `graph.txt` file
+5. run the app or refresh page to make the app generate the `progress.json`
+
+
+### Installation
 
 Be sure to install packages from `requirements.txt` file. Navigate to the directory in command line and run:
 
