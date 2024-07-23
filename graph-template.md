@@ -175,7 +175,7 @@ Case Studies in Statistical Thinking
 Discrete Event Simulation in Python
 Performing Experiments in Python
 Practicing Statistics Interview Questions in Python
-``
+```
 # Task:
 I want to learn about statistics from `Topics list`. Generate learning dependency graph in DOT language using described format template. Maximize concurrency without violating dependencies. Never use quotation marks. Use floors ("_") instead of spaces (" "). Lets 1. understand task and mental contrast potential issues, 2. make detailed to-do list, 3. devise detailed plan to complete task. Then lets take deep breath, carry out plan, and do task step-by-step.
 """
